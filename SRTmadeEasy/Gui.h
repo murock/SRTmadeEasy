@@ -97,6 +97,7 @@ namespace SRTmadeEasy {
 	private: System::Windows::Forms::PictureBox^  pictureBox3;
 	private: System::Windows::Forms::PictureBox^  pictureBox7;
 	private: System::Windows::Forms::PictureBox^  pictureBox8;
+	private: System::Windows::Forms::Label^  invalidLabel;
 
 
 
@@ -136,6 +137,7 @@ namespace SRTmadeEasy {
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
+			this->invalidLabel = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
@@ -270,7 +272,7 @@ namespace SRTmadeEasy {
 			// 
 			this->invalidTimeLabel->AutoSize = true;
 			this->invalidTimeLabel->ForeColor = System::Drawing::Color::Red;
-			this->invalidTimeLabel->Location = System::Drawing::Point(236, 36);
+			this->invalidTimeLabel->Location = System::Drawing::Point(235, 33);
 			this->invalidTimeLabel->Name = L"invalidTimeLabel";
 			this->invalidTimeLabel->Size = System::Drawing::Size(88, 26);
 			this->invalidTimeLabel->TabIndex = 14;
@@ -419,12 +421,24 @@ namespace SRTmadeEasy {
 			this->pictureBox8->TabIndex = 33;
 			this->pictureBox8->TabStop = false;
 			// 
+			// invalidLabel
+			// 
+			this->invalidLabel->AutoSize = true;
+			this->invalidLabel->ForeColor = System::Drawing::Color::Red;
+			this->invalidLabel->Location = System::Drawing::Point(239, 33);
+			this->invalidLabel->Name = L"invalidLabel";
+			this->invalidLabel->Size = System::Drawing::Size(107, 13);
+			this->invalidLabel->TabIndex = 28;
+			this->invalidLabel->Text = L"Invalid from or to time";
+			this->invalidLabel->Visible = false;
+			// 
 			// Gui
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(739, 541);
+			this->Controls->Add(this->invalidLabel);
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->Controls->Add(this->langCodeTextBox);
 			this->Controls->Add(this->langCodeLabel);
@@ -498,43 +512,55 @@ namespace SRTmadeEasy {
 		int capNum;
 		capNum = System::Convert::ToInt32(capEditTextBox->Text);
 
-		int intFromTime = System::Convert::ToInt32(fromTextBox->Text);
-		int intToTime = System::Convert::ToInt32(toTextBox->Text);
+		int intFromTime = 0;
+		int intToTime = 0;
 
-		if (intFromTime < intToTime) {
-			if (capNum - 1 == captions.size()) {	//make sure its a new caption
-				//	converting text from textbox to std::string
-				this->addWarningLabel->Visible = false;
-				this->invalidTimeLabel->Visible = false;
-				msclr::interop::marshal_context context;
-				std::string fromTime = context.marshal_as<std::string>(fromTextBox->Text);
-				msclr::interop::marshal_context context2;
-				std::string toTime = context2.marshal_as<std::string>(toTextBox->Text);
-				msclr::interop::marshal_context context3;
-				std::string caption = context3.marshal_as<std::string>(captionTextBox->Text);
-				msclr::interop::marshal_context context4;
-				std::string capToEdit = context4.marshal_as<std::string>(capEditTextBox->Text);
-				int currentCap = textCap(fromTime, toTime, caption, capToEdit);
-				capEditTextBox->Text = System::Convert::ToString(currentCap);
-				toTextBox->Text = "";
-				captionTextBox->Text = "";
-				//	std::vector<std::string> lastCaption = captions[currentCap - 2];
-				//	String^ strToTime = gcnew String(lastCaption[2].c_str());
+		try {
+			intFromTime = System::Convert::ToInt32(fromTextBox->Text);
+			intToTime = System::Convert::ToInt32(toTextBox->Text);
 
-				fromTextBox->Text = System::Convert::ToString(toTimes[currentCap - 2]);
+			if (intFromTime < intToTime) {
+				if (capNum - 1 == captions.size()) {	//make sure its a new caption
+														//	converting text from textbox to std::string
+					this->addWarningLabel->Visible = false;
+					this->invalidTimeLabel->Visible = false;
+					msclr::interop::marshal_context context;
+					std::string fromTime = context.marshal_as<std::string>(fromTextBox->Text);
+					msclr::interop::marshal_context context2;
+					std::string toTime = context2.marshal_as<std::string>(toTextBox->Text);
+					msclr::interop::marshal_context context3;
+					std::string caption = context3.marshal_as<std::string>(captionTextBox->Text);
+					msclr::interop::marshal_context context4;
+					std::string capToEdit = context4.marshal_as<std::string>(capEditTextBox->Text);
+					int currentCap = textCap(fromTime, toTime, caption, capToEdit);
+					capEditTextBox->Text = System::Convert::ToString(currentCap);
+					toTextBox->Text = "";
+					captionTextBox->Text = "";
+					//	std::vector<std::string> lastCaption = captions[currentCap - 2];
+					//	String^ strToTime = gcnew String(lastCaption[2].c_str());
+
+					fromTextBox->Text = System::Convert::ToString(toTimes[currentCap - 2]);
+				}
+				else {
+					this->addWarningLabel->Visible = true;
+				}
 			}
 			else {
-				this->addWarningLabel->Visible = true;
+				this->invalidTimeLabel->Visible = true;
 			}
 		}
-		else {
-			this->invalidTimeLabel->Visible = true;
+		catch(...){
+			this->invalidLabel->Visible = true;
 		}
+
+
+
  ;
 	}
 
 private: System::Void capTextChange(System::Object^  sender, System::EventArgs^  e) {
 	//	capToEditLabel->Text = "it worked";
+	this->invalidLabel->Visible = false;
 	this->addWarningLabel->Visible = false;
 	this->invalidTimeLabel->Visible = false;
 	msclr::interop::marshal_context context4;
