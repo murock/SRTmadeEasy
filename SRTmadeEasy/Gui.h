@@ -99,9 +99,15 @@ namespace SRTmadeEasy {
 	private: System::Windows::Forms::PictureBox^  pictureBox8;
 	private: System::Windows::Forms::Label^  invalidLabel;
 
+	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel2;
+
 
 
 		array<System::Windows::Forms::Label^>  ^LabelArr;
+	private: System::Windows::Forms::Label^  capStartLabel;
+	private: System::Windows::Forms::Label^  capEndLabel;
+	private: System::Windows::Forms::Label^  srtFinishedLabel;
+			 array<System::Windows::Forms::Label^>  ^LabelArr2;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -138,6 +144,10 @@ namespace SRTmadeEasy {
 			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
 			this->invalidLabel = (gcnew System::Windows::Forms::Label());
+			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->capStartLabel = (gcnew System::Windows::Forms::Label());
+			this->capEndLabel = (gcnew System::Windows::Forms::Label());
+			this->srtFinishedLabel = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
@@ -214,6 +224,8 @@ namespace SRTmadeEasy {
 			// capToEditLabel
 			// 
 			this->capToEditLabel->AutoSize = true;
+			this->capToEditLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->capToEditLabel->Location = System::Drawing::Point(139, 17);
 			this->capToEditLabel->Name = L"capToEditLabel";
 			this->capToEditLabel->Size = System::Drawing::Size(89, 13);
@@ -326,9 +338,9 @@ namespace SRTmadeEasy {
 			// 
 			this->tableLayoutPanel1->ColumnCount = 3;
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				30)));
+				36.12717F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
+				43.64162F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				20)));
 			this->tableLayoutPanel1->Controls->Add(this->pictureBox5, 1, 2);
@@ -338,7 +350,7 @@ namespace SRTmadeEasy {
 			this->tableLayoutPanel1->Controls->Add(this->pictureBox3, 1, 8);
 			this->tableLayoutPanel1->Controls->Add(this->pictureBox7, 1, 10);
 			this->tableLayoutPanel1->Controls->Add(this->pictureBox8, 1, 12);
-			this->tableLayoutPanel1->Location = System::Drawing::Point(424, 17);
+			this->tableLayoutPanel1->Location = System::Drawing::Point(514, 53);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 14;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
@@ -355,13 +367,13 @@ namespace SRTmadeEasy {
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 40)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(253, 425);
+			this->tableLayoutPanel1->Size = System::Drawing::Size(346, 425);
 			this->tableLayoutPanel1->TabIndex = 27;
 			// 
 			// pictureBox5
 			// 
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(78, 63);
+			this->pictureBox5->Location = System::Drawing::Point(128, 63);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(107, 27);
 			this->pictureBox5->TabIndex = 28;
@@ -370,7 +382,7 @@ namespace SRTmadeEasy {
 			// pictureBox6
 			// 
 			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
-			this->pictureBox6->Location = System::Drawing::Point(78, 123);
+			this->pictureBox6->Location = System::Drawing::Point(128, 123);
 			this->pictureBox6->Name = L"pictureBox6";
 			this->pictureBox6->Size = System::Drawing::Size(107, 27);
 			this->pictureBox6->TabIndex = 29;
@@ -379,7 +391,7 @@ namespace SRTmadeEasy {
 			// pictureBox4
 			// 
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(78, 3);
+			this->pictureBox4->Location = System::Drawing::Point(128, 3);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(107, 27);
 			this->pictureBox4->TabIndex = 27;
@@ -388,7 +400,7 @@ namespace SRTmadeEasy {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(78, 183);
+			this->pictureBox2->Location = System::Drawing::Point(128, 183);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(107, 27);
 			this->pictureBox2->TabIndex = 30;
@@ -397,7 +409,7 @@ namespace SRTmadeEasy {
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(78, 243);
+			this->pictureBox3->Location = System::Drawing::Point(128, 243);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(107, 27);
 			this->pictureBox3->TabIndex = 31;
@@ -406,7 +418,7 @@ namespace SRTmadeEasy {
 			// pictureBox7
 			// 
 			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
-			this->pictureBox7->Location = System::Drawing::Point(78, 303);
+			this->pictureBox7->Location = System::Drawing::Point(128, 303);
 			this->pictureBox7->Name = L"pictureBox7";
 			this->pictureBox7->Size = System::Drawing::Size(107, 27);
 			this->pictureBox7->TabIndex = 32;
@@ -415,7 +427,7 @@ namespace SRTmadeEasy {
 			// pictureBox8
 			// 
 			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
-			this->pictureBox8->Location = System::Drawing::Point(78, 363);
+			this->pictureBox8->Location = System::Drawing::Point(128, 363);
 			this->pictureBox8->Name = L"pictureBox8";
 			this->pictureBox8->Size = System::Drawing::Size(107, 27);
 			this->pictureBox8->TabIndex = 33;
@@ -432,12 +444,67 @@ namespace SRTmadeEasy {
 			this->invalidLabel->Text = L"Invalid from or to time";
 			this->invalidLabel->Visible = false;
 			// 
+			// tableLayoutPanel2
+			// 
+			this->tableLayoutPanel2->ColumnCount = 1;
+			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+				100)));
+			this->tableLayoutPanel2->Location = System::Drawing::Point(445, 98);
+			this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
+			this->tableLayoutPanel2->RowCount = 7;
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 60)));
+			this->tableLayoutPanel2->Size = System::Drawing::Size(77, 425);
+			this->tableLayoutPanel2->TabIndex = 30;
+			// 
+			// capStartLabel
+			// 
+			this->capStartLabel->AutoSize = true;
+			this->capStartLabel->Location = System::Drawing::Point(520, 20);
+			this->capStartLabel->Name = L"capStartLabel";
+			this->capStartLabel->Size = System::Drawing::Size(94, 13);
+			this->capStartLabel->TabIndex = 31;
+			this->capStartLabel->Text = L"Caption Start Time";
+			// 
+			// capEndLabel
+			// 
+			this->capEndLabel->AutoSize = true;
+			this->capEndLabel->Location = System::Drawing::Point(774, 20);
+			this->capEndLabel->Name = L"capEndLabel";
+			this->capEndLabel->Size = System::Drawing::Size(91, 13);
+			this->capEndLabel->TabIndex = 32;
+			this->capEndLabel->Text = L"Caption End Time";
+			// 
+			// srtFinishedLabel
+			// 
+			this->srtFinishedLabel->AutoSize = true;
+			this->srtFinishedLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->srtFinishedLabel->ForeColor = System::Drawing::Color::Red;
+			this->srtFinishedLabel->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->srtFinishedLabel->Location = System::Drawing::Point(140, 148);
+			this->srtFinishedLabel->Name = L"srtFinishedLabel";
+			this->srtFinishedLabel->Size = System::Drawing::Size(673, 138);
+			this->srtFinishedLabel->TabIndex = 33;
+			this->srtFinishedLabel->Text = L"Your SRT file is now in the folder \r\nwhere you installed SRT Made Easy.\r\nOpen wit"
+				L"h Notepad or similar.";
+			this->srtFinishedLabel->Visible = false;
+			// 
 			// Gui
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
-			this->ClientSize = System::Drawing::Size(739, 541);
+			this->ClientSize = System::Drawing::Size(922, 541);
+			this->Controls->Add(this->srtFinishedLabel);
+			this->Controls->Add(this->capEndLabel);
+			this->Controls->Add(this->capStartLabel);
+			this->Controls->Add(this->tableLayoutPanel2);
 			this->Controls->Add(this->invalidLabel);
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->Controls->Add(this->langCodeTextBox);
@@ -480,8 +547,33 @@ namespace SRTmadeEasy {
 		void InitializeComponent1(void)
 		{
 			//create the label array
-			this->LabelArr = gcnew array<System::Windows::Forms::Label^>(21);
+			this->LabelArr2 = gcnew array<System::Windows::Forms::Label^>(7);
 			int i = 0;
+			while (i < 7)	//number of labels
+			{
+				this->LabelArr2[i] = (gcnew System::Windows::Forms::Label());
+				for (int x = 0; x < 1; x++) {
+					for (int y = 0; y < 7; y++) {
+						this->LabelArr2[i] = (gcnew System::Windows::Forms::Label());
+						this->tableLayoutPanel2->Controls->Add(this->LabelArr2[i], x, y);
+						this->LabelArr2[i]->AutoSize = true;
+						this->LabelArr2[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+							static_cast<System::Byte>(0)));
+						this->LabelArr2[i]->ForeColor = System::Drawing::Color::DodgerBlue;
+						this->LabelArr2[i]->Location = System::Drawing::Point(2, 33);
+						this->LabelArr2[i]->Size = System::Drawing::Size(65, 13);
+						this->LabelArr2[i]->TabIndex = 29;
+
+
+						i++;
+
+					}
+				}
+			}
+
+			//create the label array
+			this->LabelArr = gcnew array<System::Windows::Forms::Label^>(21);
+			i = 0;
 			while (i < 21)	//number of labels
 			{
 				this->LabelArr[i] = (gcnew System::Windows::Forms::Label());
@@ -494,20 +586,24 @@ namespace SRTmadeEasy {
 							this->LabelArr[i]->Location = System::Drawing::Point(1, 0);
 							this->LabelArr[i]->Size = System::Drawing::Size(35, 13);
 							this->LabelArr[i]->TabIndex = 0;
-							this->LabelArr[i]->Text = L"0";
 							this->LabelArr[i]->TextAlign = System::Drawing::ContentAlignment::TopLeft;
 							this->LabelArr[i]->Anchor = System::Windows::Forms::AnchorStyles::None;
+							this->LabelArr[i]->ForeColor = System::Drawing::Color::DodgerBlue;
+							this->LabelArr[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+								static_cast<System::Byte>(0)));
 							if (((x == 0) && (y & 1) == 1)) {	//if looking at caption label
 								this->tableLayoutPanel1->SetColumnSpan(this->LabelArr[i], 3);
-								this->LabelArr[i]->Text = L"Blank caption";
+								this->LabelArr[i]->ForeColor = System::Drawing::Color::Black;
+								this->LabelArr[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+									static_cast<System::Byte>(0)));
 							}
 							i++;
 						}
 					}
 				}
 			}
-
 		}
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		int capNum;
 		capNum = System::Convert::ToInt32(capEditTextBox->Text);
@@ -560,6 +656,7 @@ namespace SRTmadeEasy {
 
 private: System::Void capTextChange(System::Object^  sender, System::EventArgs^  e) {
 	//	capToEditLabel->Text = "it worked";
+	this->srtFinishedLabel->Visible = false;
 	this->invalidLabel->Visible = false;
 	this->addWarningLabel->Visible = false;
 	this->invalidTimeLabel->Visible = false;
@@ -588,6 +685,8 @@ private: System::Void capTextChange(System::Object^  sender, System::EventArgs^ 
 			String^ toTime = gcnew String(singleCaption[2].c_str());
 			String^ caption = gcnew String(singleCaption[3].c_str());
 
+
+
 			fromTextBox->Text = fromTime;
 			toTextBox->Text = toTime;
 			captionTextBox->Text = caption;
@@ -612,6 +711,11 @@ private: System::Void capTextChange(System::Object^  sender, System::EventArgs^ 
 			String^ fromTime = gcnew String(singleCaption[1].c_str());
 			String^ toTime = gcnew String(singleCaption[2].c_str());
 			String^ caption = gcnew String(singleCaption[3].c_str());
+
+			std::string strcaptionNumber = "Caption: " + singleCaption[0];
+			String^ captionNumber = gcnew String(strcaptionNumber.c_str());
+
+			LabelArr2[i]->Text = captionNumber;
 			LabelArr[i * 2] ->Text = fromTime;
 			LabelArr[i + 14] ->Text = toTime;
 			LabelArr[(i * 2) + 1] ->Text = caption;
@@ -630,6 +734,7 @@ private: System::Void createButton_Click(System::Object^  sender, System::EventA
 	msclr::interop::marshal_context context2;
 	std::string langCode = context.marshal_as<std::string>(langCodeTextBox->Text);
 	writeSRT(fileName, langCode);
+	this->srtFinishedLabel->Visible = true;
 }
 private: System::Void editButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	int capNum;

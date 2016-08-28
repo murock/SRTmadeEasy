@@ -126,6 +126,9 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+      <NoEntryPoint>false</NoEntryPoint>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
